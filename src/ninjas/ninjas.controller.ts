@@ -10,11 +10,14 @@ import {
   Patch,
   NotFoundException,
   ValidationPipe,
+  UseGuards,
 } from '@nestjs/common';
 import { NinjasService } from './ninjas.service';
 import { CreateNinjaDto } from './dto/create-ninja.dto';
+import { BeltGuard } from 'src/belt.guard';
 
 @Controller('ninjas')
+@UseGuards(BeltGuard)
 export class NinjasController {
   constructor(private readonly ninjaService: NinjasService) {}
 
